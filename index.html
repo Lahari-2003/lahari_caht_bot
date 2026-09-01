@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lahari | Portfolio Chat Bot</title>
+    <meta
+      name="description"
+      content="Portfolio website and AI-style chat bot for Lahari, a software developer and problem solver."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark">L</div>
+          <span>Lahari</span>
+        </div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero section-card">
+          <div class="hero-copy">
+            <p class="eyebrow">Portfolio AI assistant</p>
+            <h1>Crafting ideas into digital experiences.</h1>
+            <p class="lead">
+              I’m Lahari, a software developer focused on building thoughtful web
+              products, user-friendly interfaces, and practical automation tools.
+            </p>
+            <div class="cta-row">
+              <a class="primary-btn" href="#projects">View projects</a>
+              <a class="secondary-btn" href="#contact">Let’s connect</a>
+            </div>
+            <ul class="quick-facts" aria-label="Highlights">
+              <li>4+ years building products</li>
+              <li>10+ collaborative projects</li>
+              <li>Open to opportunities</li>
+            </ul>
+          </div>
+
+          <div class="profile-panel">
+            <div class="portrait-frame">
+              <div class="portrait-glow"></div>
+              <div class="portrait-badge">Available for work</div>
+            </div>
+            <div class="mini-stat-grid">
+              <div>
+                <strong>Frontend</strong>
+                <span>React • JS • HTML</span>
+              </div>
+              <div>
+                <strong>Backend</strong>
+                <span>Node • APIs • SQL</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="about-grid">
+          <article class="section-card info-card">
+            <p class="section-label">About me</p>
+            <h2>I like turning challenges into clear, high-impact solutions.</h2>
+            <p>
+              From concept to release, I enjoy translating ideas into polished
+              digital experiences. My work blends analytical thinking with a
+              product mindset to create interfaces that are usable, efficient, and
+              visually engaging.
+            </p>
+          </article>
+
+          <article class="section-card stat-card">
+            <div class="stat-item">
+              <strong>3</strong>
+              <span>years of hands-on dev experience</span>
+            </div>
+            <div class="stat-item">
+              <strong>12</strong>
+              <span>projects shipped with real users</span>
+            </div>
+            <div class="stat-item">
+              <strong>100%</strong>
+              <span>curiosity-driven learning</span>
+            </div>
+          </article>
+        </section>
+
+        <section id="skills" class="section-card section-block">
+          <div class="section-header-row">
+            <div>
+              <p class="section-label">Core capabilities</p>
+              <h2>Tools and strengths</h2>
+            </div>
+          </div>
+          <div class="skill-cloud" aria-label="Skill tags">
+            <span>JavaScript</span>
+            <span>TypeScript</span>
+            <span>React</span>
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>MongoDB</span>
+            <span>SQL</span>
+            <span>REST APIs</span>
+            <span>UI/UX</span>
+            <span>Python</span>
+            <span>Problem Solving</span>
+            <span>Product Thinking</span>
+          </div>
+        </section>
+
+        <section id="projects" class="section-card section-block">
+          <div class="section-header-row">
+            <div>
+              <p class="section-label">Selected work</p>
+              <h2>Recent projects</h2>
+            </div>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-meta">
+                <span class="project-tag">AI assistant</span>
+              </div>
+              <h3>Smart Career Companion</h3>
+              <p>
+                Built a dashboard to help users discover learning paths, track goals,
+                and receive tailored recommendations through an interactive chat flow.
+              </p>
+            </article>
+
+            <article class="project-card">
+              <div class="project-meta">
+                <span class="project-tag">Web app</span>
+              </div>
+              <h3>Team Productivity Portal</h3>
+              <p>
+                Designed and implemented a collaborative workspace focused on task
+                visibility, custom reporting, and streamlined team communication.
+              </p>
+            </article>
+
+            <article class="project-card">
+              <div class="project-meta">
+                <span class="project-tag">Automation</span>
+              </div>
+              <h3>Workflow Insights Engine</h3>
+              <p>
+                Developed a data-driven automation tool that reduces repetitive tasks
+                and surfaces meaningful operational insights using smart filters.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" class="section-card section-block contact-strip">
+          <div>
+            <p class="section-label">Let’s talk</p>
+            <h2>Open to freelance, product, and full-time roles.</h2>
+          </div>
+          <a href="mailto:lahari.dev@example.com" class="primary-btn">Contact me</a>
+        </section>
+      </main>
+
+      <aside class="chat-widget" aria-label="Portfolio chatbot">
+        <div class="chat-header">
+          <div class="chat-status">
+            <span class="status-dot"></span>
+            <span>Portfolio Bot</span>
+          </div>
+          <button class="ghost-btn" id="resetChat" type="button">Reset</button>
+        </div>
+
+        <div class="chat-body" id="chatBody" aria-live="polite">
+          <div class="message bot-message">
+            Hi! I’m Lahari’s portfolio assistant. Ask me about skills, projects,
+            experience, or how to connect.
+          </div>
+        </div>
+
+        <form class="chat-form" id="chatForm">
+          <label class="sr-only" for="chatInput">Message</label>
+          <input
+            id="chatInput"
+            name="chatInput"
+            type="text"
+            placeholder="Ask about my work..."
+            autocomplete="off"
+          />
+          <button type="submit">Send</button>
+        </form>
+      </aside>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
