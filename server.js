@@ -121,7 +121,7 @@ app.post('/api/chat', async (req, res) => {
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
 
-  if (!apiKey || apiKey === 'PASTE_YOUR_ANTHROPIC_KEY_HERE') {
+  if (!apiKey || apiKey === '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') {
     return res.json({ answer: getFallbackResponse(message) });
   }
 
