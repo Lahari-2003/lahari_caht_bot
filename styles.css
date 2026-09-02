@@ -26,6 +26,11 @@ body {
   color: var(--text);
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 button,
 input,
 a {
@@ -87,6 +92,11 @@ a {
 .main-nav a {
   color: var(--muted);
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--text);
 }
 
 main {
@@ -167,6 +177,7 @@ main {
   border: 0;
   border-radius: 12px;
   cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .primary-btn,
@@ -188,6 +199,14 @@ main {
   background: rgba(125, 211, 252, 0.12);
   color: var(--text);
   border: 1px solid rgba(125, 211, 252, 0.25);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.ghost-btn:hover,
+.chat-form button:hover,
+.prompt-chip:hover {
+  transform: translateY(-1px);
 }
 
 .profile-panel {
@@ -248,6 +267,7 @@ main {
 .stat-item span {
   color: var(--muted);
   font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .about-grid {
@@ -276,6 +296,11 @@ main {
 .stat-item {
   padding: 18px 0;
   border-bottom: 1px solid var(--border);
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .section-block {
@@ -383,6 +408,26 @@ main {
   padding: 7px 12px;
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+.education-card {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.education-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.education-content h3 {
+  margin: 0;
+}
+
+.education-content p,
+.education-content span {
+  color: var(--muted);
 }
 
 .contact-strip {
@@ -494,6 +539,10 @@ main {
   color: var(--text);
   border-radius: 12px;
   padding: 12px 14px;
+}
+
+.chat-form input::placeholder {
+  color: var(--muted);
 }
 
 .chat-form button {

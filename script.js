@@ -12,6 +12,32 @@ function addMessage(text, sender = 'bot') {
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
+function getFallbackResponse(input) {
+  const lower = (input || '').toLowerCase();
+
+  if (/(skill|stack|tech|language|framework|gcp|bigquery|spark|airflow|sql|dbt|python|cloud)/.test(lower)) {
+    return 'Lahari is a Data Engineer with hands-on skills in Python, SQL, Spark, PySpark, Airflow, BigQuery, Dataflow, Dataproc, Google Cloud Storage, Kafka, dbt, Terraform, and cloud monitoring tools.';
+  }
+
+  if (/(project|portfolio|work|vinac|mobility|smart city|construction)/.test(lower)) {
+    return 'Recent work includes Smart City and Mobility and VINAC, both centered on cloud data pipelines, analytics, and data-driven decision support.';
+  }
+
+  if (/(experience|background|career|work history|resume|journey|umkc|citius)/.test(lower)) {
+    return 'Lahari has 3+ years of experience as a Data Engineer across UMKC IS Labs and Citius Tech, with strong expertise in GCP architecture, ETL orchestration, data quality, and enterprise reporting.';
+  }
+
+  if (/(contact|email|phone|reach|hire|connect|opportunity)/.test(lower)) {
+    return 'You can contact Lahari at +1 (913)-272-1290 or paidipatilahari14@gmail.com for data engineering, cloud, and analytics opportunities.';
+  }
+
+  if (/(about|who|lahari|summary|data engineer)/.test(lower)) {
+    return 'Lahari Paidipati is a Data Engineer based in Kansas City, MO, with experience building data warehouses, ETL pipelines, and cloud-native analytics systems.';
+  }
+
+  return 'I can answer questions about Lahari’s background, skills, project work, GCP experience, and contact details. Try asking about Spark, BigQuery, ETL pipelines, or recent projects.';
+}
+
 async function askPortfolioAssistant(prompt) {
   try {
     const response = await fetch('/api/chat', {
@@ -21,10 +47,15 @@ async function askPortfolioAssistant(prompt) {
     });
 
     const data = await response.json();
-    return data.answer || 'I could not answer that question right now.';
+
+    if (!response.ok) {
+      return data.answer || data.error || getFallbackResponse(prompt);
+    }
+
+    return data.answer || getFallbackResponse(prompt);
   } catch (error) {
     console.error('Chat request failed:', error);
-    return 'I could not reach the AI backend right now. Please try again.';
+    return getFallbackResponse(prompt);
   }
 }
 
@@ -32,28 +63,30 @@ chatForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const userMessage = chatInput.value.trim();
 
-  if (!userMessage) return;
+  if (!userMessage) {
+    return;
+  }
 
   addMessage(userMessage, 'user');
   chatInput.value = '';
 
-  const answer = await askPortfolioAssistant(userMessage);
-  window.setTimeout(() => addMessage(answer, 'bot'), 200);
+  const response = await askPortfolioAssistant(userMessage);
+  window.setTimeout(() => addMessage(response, 'bot'), 250);
 });
 
 promptButtons.forEach((button) => {
   button.addEventListener('click', async () => {
     const prompt = button.textContent.trim();
     addMessage(prompt, 'user');
-    const answer = await askPortfolioAssistant(prompt);
-    window.setTimeout(() => addMessage(answer, 'bot'), 200);
+    const response = await askPortfolioAssistant(prompt);
+    window.setTimeout(() => addMessage(response, 'bot'), 250);
   });
 });
 
 resetChat.addEventListener('click', () => {
   chatBody.innerHTML = `
     <div class="message bot-message">
-      Hello, I’m Lahari’s portfolio assistant. Ask about my skills, experience, projects, or contact details.
+      Hello, I’m Lahari’s portfolio assistant. Ask about my experience, GCP skills, projects, or contact details.
     </div>
   `;
   chatInput.focus();

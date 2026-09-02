@@ -14,13 +14,14 @@ const resume = {
   phone: '+1 (913)-272-1290',
   email: 'paidipatilahari14@gmail.com',
   summary:
-    'Data Engineer with 3+ years of experience building scalable GCP-based data platforms, ETL/ELT pipelines, and analytics systems using Python, SQL, Spark, Airflow, BigQuery, Dataflow, Dataproc, and Google Cloud Storage.',
+    'Data Engineer with 3+ years of experience building scalable GCP-based data platforms, ETL/ELT pipelines, and analytics solutions using Python, SQL, Spark, Airflow, BigQuery, Dataflow, Dataproc, Cloud Composer, Pub/Sub, and Google Cloud Storage.',
   skills: [
     'Python',
     'SQL',
+    'Apache Spark',
     'PySpark',
-    'Spark',
     'Airflow',
+    'Cloud Composer',
     'BigQuery',
     'Dataflow',
     'Dataproc',
@@ -29,73 +30,86 @@ const resume = {
     'dbt',
     'Terraform',
     'Docker',
-    'Cloud Composer'
+    'Kubernetes',
+    'Power BI',
+    'Looker'
   ],
   experience: [
     {
       role: 'Student Assistant, UMKC IS Labs',
-      period: '08/2024 - Present',
-      details: [
-        'Built and maintained ETL/ELT pipelines for reporting and operational analytics.',
-        'Developed dbt workflows, validation checks, and reconciliation logic.',
-        'Optimized BigQuery performance using partitioning, clustering, and tuning.'
+      period: '08/2024 – Present',
+      points: [
+        'Designed and maintained ETL/ELT pipelines using Python, SQL, Spark, PySpark, Airflow, Cloud Composer, BigQuery, GCS, and Dataproc.',
+        'Built reusable data models, dbt transformations, validation checks, and reconciliation logic for reportable and ML-ready datasets.',
+        'Optimized BigQuery tables using partitioning, clustering, and query tuning for analytics and dashboard workloads.',
+        'Supported CI/CD, monitoring, and troubleshooting using Git, Jenkins, Docker, Terraform, Cloud Logging, Cloud Monitoring, and Splunk.'
       ]
     },
     {
       role: 'Data Engineer, Citius Tech',
-      period: '07/2022 - 05/2024',
-      details: [
-        'Developed batch and near-real-time pipelines with Spark, Kafka, and Airflow.',
-        'Created analytics-ready datasets in BigQuery, Snowflake, and data lakes.',
-        'Implemented monitoring, data quality checks, and lineage validation.'
+      period: '07/2022 – 05/2024',
+      points: [
+        'Developed batch and near-real-time data pipelines using Python, SQL, Spark, PySpark, Airflow, BigQuery, Dataflow, Dataproc, Pub/Sub, Kafka, and Google Cloud Storage.',
+        'Built and maintained BigQuery, Snowflake, and data lake transformation layers using SQL, dbt, CDC, and distributed processing techniques.',
+        'Implemented data quality validations, anomaly detection, reconciliation logic, lineage tracking, and monitoring frameworks.',
+        'Worked in Agile environments with architects, analysts, QA teams, and stakeholders to deliver cloud-native data solutions.'
+      ]
+    },
+    {
+      role: 'Data Engineer Intern, Citius Tech',
+      period: '06/2022 – 07/2022',
+      points: [
+        'Assisted in developing ETL pipelines using Python, SQL, Spark, BigQuery, GCS, and Airflow for enterprise reporting and analytics.',
+        'Performed extraction, cleansing, transformation, validation, and testing on structured and semi-structured datasets.',
+        'Developed SQL queries and transformation logic to support dashboards and analytics workflows.'
       ]
     }
   ],
   projects: [
     {
-      name: 'Smart City and Mobility',
+      name: 'Smart City and Mobility – Urban Efficiency Enhancement',
       description:
-        'Built a Python/Django-based platform for transportation and infrastructure analysis using urban datasets.'
+        'Developed a data-driven platform using Python and Django to analyze transportation and infrastructure patterns from multiple urban datasets. Applied machine learning and data analysis techniques to improve transportation efficiency, sustainability, and accessibility.'
     },
     {
-      name: 'VINAC',
+      name: 'VINAC (Make Construction Easy)',
       description:
-        'Developed a cloud-native AI platform for construction intelligence using GCS, BigQuery, Cloud Functions, and Cloud Run.'
+        'Built a data-centric AI platform on Google Cloud Platform for construction design and project intelligence, ingesting user behavior, project, and design data into Google Cloud Storage and BigQuery. Used Cloud Functions, Cloud Run, Docker, Terraform, and monitoring tools for scalable deployment and product intelligence.'
     }
   ]
 };
 
-function fallbackAnswer(input) {
-  const value = (input || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').trim();
+function getFallbackResponse(input) {
+  const lower = (input || '').toLowerCase();
 
-  if (/(skill|stack|tech|language|gcp|bigquery|spark|airflow|python|sql|dbt)/.test(value)) {
-    return 'Lahari works with Python, SQL, PySpark, Airflow, BigQuery, Dataflow, Dataproc, Cloud Composer, Kafka, dbt, Docker, and Terraform. His focus is on building scalable, cloud-native data systems and reliable ETL/ELT pipelines.';
+  if (/(skill|stack|tech|language|framework|gcp|bigquery|spark|airflow|sql|dbt|python|cloud)/.test(lower)) {
+    return 'Lahari is a Data Engineer with hands-on skills in Python, SQL, Spark, PySpark, Airflow, BigQuery, Dataflow, Dataproc, Google Cloud Storage, Kafka, dbt, Terraform, and cloud monitoring tools. His work focuses on building reliable ETL/ELT pipelines and scalable GCP analytics platforms.';
   }
 
-  if (/(project|portfolio|work|vinac|smart city|mobility|construction)/.test(value)) {
-    return 'Recent project work includes the Smart City and Mobility initiative and VINAC, both centered on AI, data engineering, and analytical decision support for real-world business problems.';
+  if (/(project|portfolio|work|vinac|mobility|smart city|construction)/.test(lower)) {
+    return 'Recent work includes Smart City and Mobility – Urban Efficiency Enhancement and VINAC (Make Construction Easy), both centered on cloud data pipelines, analytics, and data-driven decision support.';
   }
 
-  if (/(experience|background|career|resume|journey|umkc|citius)/.test(value)) {
-    return 'Lahari has 3+ years of hands-on data engineering experience, including work at UMKC IS Labs and Citius Tech, with a strong emphasis on GCP data platforms, pipeline automation, governance, and data quality.';
+  if (/(experience|background|career|work history|resume|journey|umkc|citius)/.test(lower)) {
+    return 'Lahari has 3+ years of experience as a Data Engineer across UMKC IS Labs and Citius Tech, with strong expertise in GCP architecture, ETL orchestration, data quality, and enterprise reporting.';
   }
 
-  if (/(contact|email|phone|hire|connect|reach|opportunity)/.test(value)) {
-    return 'You can reach Lahari at +1 (913)-272-1290 or paidipatilahari14@gmail.com. He is based in Kansas City, MO and is open to opportunities in data engineering and cloud analytics.';
+  if (/(contact|email|phone|reach|hire|connect|opportunity)/.test(lower)) {
+    return 'You can contact Lahari at +1 (913)-272-1290 or paidipatilahari14@gmail.com for data engineering, cloud, and analytics opportunities.';
   }
 
-  if (/(about|who|lahari|summary|data engineer)/.test(value)) {
-    return 'Lahari Paidipati is a Data Engineer focused on building scalable cloud data platforms, ETL/ELT pipelines, and analytics products using the GCP ecosystem.';
+  if (/(about|who|lahari|summary|data engineer)/.test(lower)) {
+    return 'Lahari Paidipati is a Data Engineer based in Kansas City, MO, with experience building data warehouses, ETL pipelines, and cloud-native analytics systems across Google Cloud environments.';
   }
 
-  return 'I can help with Lahari’s background, skills, projects, cloud experience, and contact details. Try asking about GCP, Spark, BigQuery, ETL pipelines, or project work.';
+  return 'I can answer questions about Lahari’s background, skills, project work, GCP experience, and contact details. Try asking about Spark, BigQuery, ETL pipelines, or recent projects.';
 }
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 app.get('/health', (req, res) => {
-  res.json({ ok: true, message: 'Portfolio assistant is running.' });
+  res.json({ ok: true, message: 'Portfolio chat server is running.' });
 });
 
 app.post('/api/chat', async (req, res) => {
@@ -108,7 +122,7 @@ app.post('/api/chat', async (req, res) => {
   const apiKey = process.env.ANTHROPIC_API_KEY;
 
   if (!apiKey || apiKey === 'PASTE_YOUR_ANTHROPIC_KEY_HERE') {
-    return res.json({ answer: fallbackAnswer(message) });
+    return res.json({ answer: getFallbackResponse(message) });
   }
 
   try {
@@ -121,35 +135,30 @@ app.post('/api/chat', async (req, res) => {
       },
       body: JSON.stringify({
         model: 'claude-3-5-sonnet-20241022',
-        max_tokens: 350,
-        system:
-          'You are a polished portfolio assistant for a Data Engineer. Use only the provided profile details and keep answers professional, accurate, and concise.',
-        messages: [
-          {
-            role: 'user',
-            content: `Profile: ${JSON.stringify(resume)}\n\nQuestion: ${message}`
-          }
-        ]
+        max_tokens: 400,
+        system: `You are a polished portfolio assistant for Lahari Paidipati, a Data Engineer. Use only the information supplied in the profile and keep answers professional, accurate, and concise. Profile: ${JSON.stringify(resume)}`,
+        messages: [{ role: 'user', content: message }]
       })
     });
 
     if (!response.ok) {
-      const text = await response.text();
-      console.error('Anthropic request failed:', text);
+      const errorText = await response.text();
+      console.error('Anthropic API error:', errorText);
       return res.status(502).json({
-        error: 'Anthropic is unavailable right now.',
-        answer: fallbackAnswer(message)
+        error: 'The AI provider is unavailable right now.',
+        answer: getFallbackResponse(message)
       });
     }
 
     const data = await response.json();
-    const answer = data?.content?.[0]?.text || fallbackAnswer(message);
+    const answer = data.content?.[0]?.text || getFallbackResponse(message);
+
     return res.json({ answer });
   } catch (error) {
-    console.error('Server-side chat failed:', error);
+    console.error('Chat request failed:', error);
     return res.status(500).json({
-      error: 'Unable to process the request.',
-      answer: fallbackAnswer(message)
+      error: 'The chat service could not complete the request.',
+      answer: getFallbackResponse(message)
     });
   }
 });
@@ -159,5 +168,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Portfolio assistant running on http://localhost:${PORT}`);
+  console.log(`Portfolio chat server running at http://localhost:${PORT}`);
 });

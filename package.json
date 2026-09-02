@@ -1,7 +1,7 @@
 {
   "name": "lahari_caht_bot",
   "version": "1.0.0",
-  "description": "Portfolio assistant with server-side Claude API integration",
+  "description": "Portfolio chatbot for Lahari Paidipati",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
