@@ -108,6 +108,10 @@ function getFallbackResponse(input) {
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
+app.get('/health', (req, res) => {
+  res.json({ ok: true, message: 'Portfolio chat server is running.' });
+});
+
 app.post('/api/chat', async (req, res) => {
   const message = (req.body && req.body.message ? req.body.message : '').trim();
 
@@ -117,7 +121,7 @@ app.post('/api/chat', async (req, res) => {
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
 
-  if (!apiKey) {
+  if (!apiKey || apiKey === 'PASTE_YOUR_ANTHROPIC_KEY_HERE') {
     return res.json({ answer: getFallbackResponse(message) });
   }
 
@@ -132,7 +136,7 @@ app.post('/api/chat', async (req, res) => {
       body: JSON.stringify({
         model: 'claude-3-5-sonnet-20241022',
         max_tokens: 400,
-        system: `You are a polished portfolio assistant for Lahari Paidipati, a Data Engineer. Use only the profile information supplied in the prompt and keep answers professional, accurate, and concise. Do not invent facts or claim unavailable detail. Profile data: ${JSON.stringify(resume)}`,
+        system: `You are a polished portfolio assistant for Lahari Paidipati, a Data Engineer. Use only the information supplied in the profile and keep answers professional, accurate, and concise. Profile: ${JSON.stringify(resume)}`,
         messages: [{ role: 'user', content: message }]
       })
     });

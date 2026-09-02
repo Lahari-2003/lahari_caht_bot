@@ -1,18 +1,12 @@
 {
   "name": "lahari_caht_bot",
   "version": "1.0.0",
-  "description": "Portfolio assistant for Lahari Paidipati",
+  "description": "Portfolio chatbot for Lahari Paidipati",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": [
-    "portfolio",
-    "chatbot",
-    "data-engineer"
-  ],
-  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
